@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register form</title>
+	<link rel="stylesheet" type="text/css" href="<%= baseUrl %>stylesheets/register.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+
+</head>
+<body>
+	
+	<div class="login-page">
+		<div style="text-align: center;">
+			<img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png" height="100"  width="100">
+		</div>
+		<div class="form">
+			<p class="message">
+				<% if(locals.success) { %>
+				Thanku for join with us....
+				<% }  else { %>
+				plese enter your details...!
+				<% } %>
+				</p>
+			<p>
+				<% 
+				if(locals.errors){
+				errors.forEach(function(e){
+				%>
+
+					<div><%= e.path+ " " +e.message %></div>
+				<%
+					});
+				} 
+				%>
+			</p>
+
+
+			<form class="register-form" method="post">
+					<input type="text" placeholder="name" name="fname" autofocus="">
+					<input type="password" placeholder="password" name="password">
+					<input type="email" placeholder="email" name="email">
+					<input type="text" name="date" placeholder="date of birth" id="date">
+					<button type="submit" class="bt">create</button>
+					<p >Already registered? <a href="#">Sign In</a></p>
+				</form>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="ajv.min.js"></script>
+		<script>
+		$(function() {
+		  $( "#date" ).datepicker({
+		    changeMonth: true,
+		    changeYear: true,
+		    dateFormat: "yy-mm-dd"
+		  });
+		});
+		</script>
+</body>
+</html>

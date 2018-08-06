@@ -1,0 +1,70 @@
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var config = require('./config');
+//for socket io
+// var io = require("socket.io")(server);
+// io.on('connection',(socket) =>){
+// 	console.log('New user connected');
+// }
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var registerRouter= require('./routes/register');
+// var validator = require('express-validator');//validation
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/mydb');
+
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+console.log("connected to mongodb");
+});
+
+
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.locals.baseUrl = config.baseUrl;
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// app.use(flash());//for flash message
+
+// app.use(validator());//validation
+
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/register', registerRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

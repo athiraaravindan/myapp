@@ -1,0 +1,42 @@
+router.get('/', function(req, res, next) {
+	
+
+	userService.getUsers({}, { password: 0 })
+	.then(function(result){
+		// console.log(result);
+		res.locals.users = result;
+		res.render('listuser');
+	})
+	.catch(function(e){
+		console.log(e);
+		res.locals.users = [];
+		res.render('listuser');
+	})
+});
+
+
+<!--  <% users.forEach(function(u){ %>
+ <tr>
+   <td><%= u.fname %></td>
+   <td><%= u.email %></td>
+   <td><%= u.date %></td>
+   <% if(u.status === 0){ %>
+     <td class=" inactive change">inactive</td>
+     <% } else {%> 
+     <td class=" act change" >active</td>
+   <% } %>
+
+   <% if(u.role === 1){ %>
+       <td style="color: black;">user</td>
+       <% } else {%> 
+       <td style="color: orange">admin</td>
+       <% } %>
+   <td><a href="<%= baseUrl %>users/edit/<%= u._id %>" class="btn btn-info" >edit</a></td>
+    <td>
+    <% if(u.status== 1){ %>
+     <a href="#" class="btn btn-danger delete" data-id="<%= u._id %>" >delete</a>
+    <% } %>
+   </td>
+
+   </tr>
+   // <% }) %> -->

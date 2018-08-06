@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Update Details</title>
+
+    <!--fordate picker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="<%= baseUrl %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="<%= baseUrl %>/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="<%= baseUrl %>stylesheets/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<%= baseUrl %>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+         .message{
+          color: green;
+          font-size: 20px;
+          font-style: italic;
+        }
+    </style>
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User Updation</h3>
+                    </div>
+                 <!--  <p class="message">
+                    <% if(locals.success) { %>
+                    Data updated successfully
+                    <% }  else { %>
+                    enter the data to be updated ...!
+                    <% } %>
+                    </p> -->
+                    <div class="panel-body">
+                        <form role="form" method="POST">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Name" name="fname" type="text" autofocus value="<%= locals.user ? user.fname : '' %>">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" value="<%= locals.user ? user.email : '' %>">
+                                </div>
+                               
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Date of Birth" name="date" type="text" id="date" value="<%= locals.user ? user.date : '' %>">
+                                </div>
+                                 <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" name="status">
+                                        <option value="0" <%= user.status === 0 ? "selected" : '' %>>inactive</option>
+                                        <option value="1" <%= user.status === 1 ? "selected" : '' %>>active</option>
+                                       
+                                    </select>
+                                </div>
+                                 <div class="form-group" >
+                                    <label>Role</label>
+                                    <select class="form-control" name="role">
+                                        <option value="1" <%= user.role === 1 ? "selected" : '' %>>user</option>
+                                        <option value="2" <%= user.role === 2 ? "selected" : '' %>>admin</option>
+                                     
+                                    </select>
+                                </div>
+                               
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Update</button>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+
+
+
+    <!--fordate picker-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="ajv.min.js"></script>
+
+    <script>
+    $(function() {
+      $( "#date" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd"
+      });
+    });
+    </script>
+
+</body>
+
+</html>

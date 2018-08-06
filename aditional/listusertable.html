@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>List of All Users</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style type="text/css">
+  .act{
+    color: green;
+  }
+  .inactive{
+    color: red;
+  }
+  .user{
+    color: orange;
+  }
+  .admin{
+    color: blue;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>List Users</h2>
+    <h3 style="text-align: center;">List All Users</h3> <br>
+    <a href="<%= baseUrl %>admin">Dashboard</a>          
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>DOB</th>
+          <th>Status</th>
+          <th>Role</th>
+
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody id="ajaxdata"> <!--load data from ajax -->
+
+      </tbody>
+    </table>
+  </div>
+  <script type="text/javascript">
+    var baseUrl = '<%= baseUrl %>';
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="<%= baseUrl %>javascripts/listusers.js"></script>
+</body>
+</html>

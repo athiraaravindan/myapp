@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register form</title>
+	<link rel="stylesheet" type="text/css" href="<%= baseUrl %>stylesheets/register.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+
+</head>
+<body>
+	
+	<div class="login-page">
+		<div style="text-align: center;">
+			<img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png" height="100"  width="100">
+		</div>
+		<div class="form">
+				<p class="message">
+					<% if(locals.success) { %>
+					Data updated successfully
+					<% }  else { %>
+					enter the data to be updated ...!
+					<% } %>
+					</p>
+				<form class="register-form" method="post">
+						<input type="text" placeholder="name" name="fname" autofocus="" value="<%= locals.user ? user.fname : '' %>">
+						<input type="email" placeholder="email" name="email" value="<%= locals.user ? user.email : '' %>">
+						<input type="text" name="date" placeholder="date of birth" id="date" value="<%= locals.user ? user.date : '' %>">
+						<select name="status">
+						   <option value="0" <%= user.status === 0 ? "selected" : '' %>>inactive</option>
+						   <option value="1" <%= user.status === 1 ? "selected" : '' %>>active</option>
+						</select>
+						   <br>
+						<select name="role">
+						    <option value="1" <%= user.role === 1 ? "selected" : '' %>>user</option>
+						    <option value="2" <%= user.role === 2 ? "selected" : '' %>>admin</option>
+						</select>
+						<br>
+
+						<button class="bt">update</button>
+					</form>
+				</div>
+			</div>
+			<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<script src="<%= baseUrl %>javascripts/moment.min.js"></script>
+			<script>
+				$(function(){
+				  $("#date").datepicker({
+				    changeMonth: true,
+				    changeYear: true,
+				    dateFormat: "yy-mm-dd"
+				  });
+				});
+			</script>
+</body>
+</html>

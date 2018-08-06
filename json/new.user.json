@@ -1,0 +1,31 @@
+{
+  "title": "newuser",
+  "description": "describes properties required to create a user",
+  "type": "object",
+  "properties": {
+    "fname": {
+    "type": "string",
+    "description": "firstname of the account user",
+    "pattern": "^[a-zA-Z ]*$"
+  },
+  "email": {
+    "type": "string",
+    "description": "email of the account user",
+    "format": "email"
+  },
+  "date": {
+    "type": "string",
+    "description": "date of birth of account",
+    "format": "date"
+    },
+    "password":{
+      "type":"string",
+       "description":"password for the account"
+    },
+     "cpassword":{
+      "type":"string",
+       "description":"confirm password"
+    }
+  },
+  "required": ["fname", "email", "date","password"]
+}

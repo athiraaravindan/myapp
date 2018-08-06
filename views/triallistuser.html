@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>list users</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+</head>
+<body style="background-color: #e6ffe6">
+
+<div class="container">
+  <h2>List Users</h2>
+  <p>Show all the users</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Email</th>
+        <th>DOB</th>
+        <th>Status</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(function(u){ %>
+      <tr>
+        <td><%= u.fname %></td>
+        <td><%= u.email %></td>
+        <td><%= u.date %></td>
+        <td><%= u.status %></td>
+        <td><a href="<%= baseUrl %>users/edit/<%= u._id %>" class="btn btn-success">edit</a></td>
+        <td> <a href="#" class="btn btn-danger delete" data-id="<%= u._id %>" >delete</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+  </table>
+</div>
+  <script type="text/javascript">
+    var baseUrl = '<%= baseUrl %>';
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="<%= baseUrl %>javascripts/listusers.js"></script>
+</body>
+</html>

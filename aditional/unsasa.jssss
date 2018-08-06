@@ -1,0 +1,11 @@
+	image: req.file.originalname,
+		imagefile: req.file.filename
+		     <!--    <script>
+        $(function() {
+          $( "#date" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "yy-mm-dd"
+          });
+        });
+        </script> -->
