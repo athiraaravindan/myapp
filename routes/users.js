@@ -146,7 +146,7 @@ router.get('/edit/:id', async function(req, res, next) {
 
  	 	var user = await userService.getUser({ _id: o_id });
  	 	user.date = moment( user.date ).format('YYYY-MM-DD');
- 	  	 res.redirect('/users');
+ 	  	 res.redirect('/users/listuser');
 
 		 // res.render('edit', { success: true, user: user });
  	 } catch(e) {
