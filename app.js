@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var config = require('./config');
 var flash = require('express-flash-messages');
-var jwt = require('express-jwt');
+var jwt = require('express-jwt'); // 4565
 
 
 
