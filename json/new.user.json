@@ -13,11 +13,6 @@
     "description": "email of the account user",
     "format": "email"
   },
-  "date": {
-    "type": "string",
-    "description": "date of birth of account",
-    "format": "date"
-    },
     "password":{
       "type":"string",
        "description":"password for the account"
@@ -27,5 +22,5 @@
        "description":"confirm password"
     }
   },
-  "required": ["fname", "email", "date","password"]
+  "required": ["fname", "email","password"]
 }

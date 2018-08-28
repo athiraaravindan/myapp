@@ -17,16 +17,16 @@ module.exports.getUsers = function(query = {}, project = {}) {
 module.exports.getUser = function(query = {}) {
 	 return User.findOne(query).lean().exec();// .lean will return the document as a plain JavaScript object rather than a mongoose document improve the perfomance for find query
 };
-//for checking the email
-// module.exports.getUseremail = function(query = {}) {
-// 	 return User.find(query).lean().exec();
-// };
+
 
 //post edit form
 module.exports.updateUser = function(query = {}, data = {}) {
 	 return User.update(query, data).exec();
 };
-
+//delete from anjular
+module.exports.deleteUser = function(query = {}) {
+	 return User.deleteOne(query).exec();
+};
 //for pagination
 
 

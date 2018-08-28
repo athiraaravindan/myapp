@@ -9,6 +9,7 @@ ajv.addSchema(userSchema, 'new.user')
  * @return {String} formatted api response
  */
 function errorResponse(schemaErrors) {
+  console.log("schemaErrors", schemaErrors)
   let errors = schemaErrors.map((error) => {
     return {
       path: error.dataPath,
@@ -31,7 +32,8 @@ function errorResponse(schemaErrors) {
   return (req, res, next) => {
     let valid = ajv.validate(params.schemaName, req.body)
     if (!valid) {
-      return res.render(params.view, errorResponse(ajv.errors))
+      return res.json({'status':'Error', error:errorResponse(ajv.errors)})
+      // return res.render(params.view, errorResponse(ajv.errors))
     }
     next()
   }

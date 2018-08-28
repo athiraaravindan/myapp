@@ -75,22 +75,6 @@ router.get('/', function(req, res, next){
  })
 
 
-// router.get('/dashboard', function(req, res, next){
-// 	res.render('adminpanel');
-// });	
-
-//for ajx request
-// router.get('/ajax/get-users', function(req, res, next) {
-
-// userService.getUsers()
-// 	.then(function(result){
-// 	res.json({ success: 1, result: result });
-// 	})
-// 	.catch(function(e){
-// 	res.json({ success: 0, result: [] });
-// 	})
-// });
-
 //forpagination
 router.get('/ajax/get-users', function(req, res, next){
 
@@ -172,6 +156,7 @@ router.post('/delete', async function(req, res, next) {
 
     }
 });
+
 // /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('welcome');
