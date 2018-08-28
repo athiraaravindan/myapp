@@ -340,7 +340,6 @@ router.post('/login1', async function(req, res, next) {
       var o_id = req.body.id;
       var pic = req.body.picname;
       var oldFileName = req.body.imgdelete;
-      console.log(oldFileName);
       var edituser = await userService.updateUser({ _id: o_id },
         {
           $set:
@@ -353,7 +352,7 @@ router.post('/login1', async function(req, res, next) {
       fs.unlink('./public/uploads/'+oldFileName, (err) => {
         console.log('successfully deleted old image');
       });
-      res.json({ success: true, user: 'success' });
+      res.json({ success: true, user: 'success',image:pic});
     } catch (e) {
 
       res.json( { success: false })
