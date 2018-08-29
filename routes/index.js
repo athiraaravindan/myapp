@@ -221,7 +221,7 @@ router.post('/login1', async function(req, res, next) {
                     role: user.role
                 }, config.secret);
                 console.log(token);
-                res.json({status : 'login successfully', token: token, name: user.fname,image:user.imagefile });
+                res.json({status : 'login successfully', token: token, name: user.fname,image:user.imagefile,role:user.role });
 
                 // res.redirect('/users')
 
